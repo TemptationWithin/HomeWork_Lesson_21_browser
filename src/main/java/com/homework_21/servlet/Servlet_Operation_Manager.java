@@ -33,6 +33,7 @@ public class Servlet_Operation_Manager extends HttpServlet {
                 response.sendRedirect("/HomeWork_Lesson_21_war_exploded/delete");
                 break;
             case (5):
+                response.sendRedirect("/HomeWork_Lesson_21_war_exploded/exit");
                 //EXIT
                 break;
         }
