@@ -1,0 +1,53 @@
+package com.homework_21.servlet.city_table.delete;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+@WebServlet("/delete")
+public class Servlet_Delete_Manager extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        PrintWriter pw = response.getWriter();
+        final String updateIndex =request.getParameter("userResponse");
+        response.sendRedirect("/HomeWork_Lesson_21_war_exploded/delete/" + updateIndex);
+        pw.close();
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        PrintWriter pw = response.getWriter();
+        pw.println("<html>");
+        pw.println("<body style=\"color:Black; background-color:DarkGray\">");
+        for (int i = 0; i < 9; i++) {
+            pw.println("<br>");
+        }
+        pw.println("<table align=\"center\" border=\"35\" >");
+        pw.println("<tr>");
+        pw.println("<th>");
+        pw.println("<h2 align=\"center\"> <u> Delete form </u></h2>");
+        pw.println("<h3 align=\"center\"> Choose read mode: </h3>");
+        pw.println("<form align=\"center\"  method = \"post\" >");
+        pw.println("   <select name = \"userResponse\">");
+        pw.println("<h2> <option  value= \"1\" selected> DELETE BY NAME                             </option>");
+        pw.println("     <option  value= \"2\">          DELETE CITIES BY POPULATION RANGE          </option>");
+        pw.println("     <option  value= \"3\">          DELETE CITIES BY INDEX                     </option>");
+        //pw.println("     <option  value= \"4\">          DELETE DATABASE BY NAME (BY PASSWORD)      </option>");
+        pw.println("   </select>");
+        pw.println("                                <input type=\"submit\" value=\"OK\" />");
+        pw.println("</form>");
+
+        pw.println("<form align=\"center\" action=\"/HomeWork_Lesson_21_war_exploded/operation\">");
+        pw.println("<button>Cancel</button>");
+        pw.println("</form>");
+        pw.println("</th>");
+        pw.println("</tr>");
+        pw.println("</table>");
+        pw.println("</body>");
+        pw.println("</html>");
+        pw.close();
+
+    }
+}
